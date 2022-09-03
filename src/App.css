@@ -1,38 +1,132 @@
-.App {
-  text-align: center;
-}
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  width: 100%;
+  height: 15vh;
+  background-color: #009FFD;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.508);
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header ul{
+  margin: 0;
+  display: flex;
+}
+.header ul a{
+  padding: 0 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+.image-gallery {
+  width: 100%;
+  height: 50vh;
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 50vh;
+}
+
+.image-gallery-slide .image-gallery-image {
+  width: 100vw;
+  object-fit: cover;
+}
+
+.panels{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.panel{
+  height: 20vh;
+  
+  aspect-ratio: 16/9;
+  width: auto;
+  border-radius: 40px;
+  display: inline-block;
+}
+
+.panel img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 40px;
+
+}
+
+.listPanels-li{
+  list-style: none;
+  padding: 7px 10px 0px 10px;
+}
+
+.listPanels{
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  display: flex;
+  background-color: rgb(227, 227, 227);
+  border-top: 2px solid black;
+  border-bottom : 2px solid black;
+
+}
+
+.listPanels::-webkit-scrollbar {
+  height: 7px;
+}
+
+.listPanels::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+.listPanels::-webkit-scrollbar-thumb {
+  background: rgb(90, 90, 90);
+}
+
+@media (max-width: 600px) {
+  .panel {
+    height: 12vh;
   }
-  to {
-    transform: rotate(360deg);
+  .listPanels-li{
+    list-style: none;
+    padding: 7px 2px 0px 2px;
   }
+  .listPanels::-webkit-scrollbar {
+    height: 0px;
+  }
+}
+
+.movie-container{
+  margin-top: 10px;
+  padding: 0 10px;;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+
+.movie{
+  /* aspect-ratio: 2/3; */
+  height: auto;
+}
+
+.movie img{
+  border-radius: 3px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
