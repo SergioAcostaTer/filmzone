@@ -161,8 +161,8 @@
   transform: scale(1.05);
   z-index: 10 ;
 }
-.notfocus{
-  filter: brightness(.7);
+.focus{
+  filter: brightness(1.2);
 }
 
 @media (max-width: 900px) {

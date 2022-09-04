@@ -4,7 +4,7 @@ import Header from './Header';
 import { API_KEY, API_URL } from "./Slider";
 
 
-const MovieDetails = (props) =>{
+const MovieDetails = () =>{
     const [details, setDetails] = useState([])
     const {id} = useParams()
 

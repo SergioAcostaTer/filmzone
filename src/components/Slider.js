@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ImageGallery from 'react-image-gallery';
+import getTrendMoviesPics from '../services/getTrendMoviesPics';
 
 export const API_URL = "https://api.themoviedb.org/3"
 export const API_KEY = "?api_key=c6b78e19f7ba833c205511b80032a27c"
@@ -12,9 +13,7 @@ const Slider = () => {
     const images = []
 
     useEffect(() => {
-        fetch(`${API_URL}/trending/movie/day${API_KEY}`)
-        .then(async response => await response.json())
-        .then(data => setTrendMoviesData(data))
+        getTrendMoviesPics().then(data => setTrendMoviesData(data))
     }, []);
 
     if (trendMoviesData.results){

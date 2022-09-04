@@ -8,6 +8,7 @@ import hulu from '../source/hulu.png'
 import disney from '../source/disney.png'
 import dazn from '../source/dazn.jpg'
 import { useEffect, useState } from "react";
+import MoviesOfProviders from "./MoviesOfProviders";
 
 
 
@@ -56,7 +57,7 @@ const ProviderDetail = () => {
     
     useEffect(() => {
         for (let i = 0; i < providers.length; i++) {
-            if(name == providers[i].name){
+            if(name === providers[i].name){
                 setPic(providers[i].src)
             }
         }
@@ -72,7 +73,7 @@ const ProviderDetail = () => {
             <section className="banner">
                 <img src={pic}></img>
             </section>
-            <h1>{name}</h1>
+            <MoviesOfProviders></MoviesOfProviders>
         </>
     )
 }

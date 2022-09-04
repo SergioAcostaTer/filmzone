@@ -53,7 +53,7 @@ const Panels = (prop) => {
             <div className='panels'>
                 <ul className='listPanels'>
                     {providers.map(provider => (
-                        <Panel color={provider.color} image={provider.src} alt={provider.name} id={provider.name}></Panel>
+                        <Panel key={provider.src} color={provider.color} image={provider.src} alt={provider.name} id={provider.name}></Panel>
                     ))}
                 </ul>
             </div>
