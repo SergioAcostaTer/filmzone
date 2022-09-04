@@ -1,18 +1,23 @@
+import { Link } from "react-router-dom"
 
 
 
 const Header = () => {
 
     return(
+        <>
         <header className={"header"}>
-            <ul>
-                <a><li>Movies</li></a>
-                <a><li>TV Shows</li></a>
-                <a><li>People</li></a>
-                <a><li>News</li></a>
-
-            </ul>
+            
         </header>
+
+            <ul className="menu">
+                <Link to={"/"}><li>Movies</li></Link>
+                <Link to={"/"}><li>TV Shows</li></Link>
+                <Link to={"/"}><li>People</li></Link>
+                <Link to={"/"}><li>News</li></Link>
+            </ul>
+        </>
+        
     )
 }
 

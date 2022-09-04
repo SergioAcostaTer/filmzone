@@ -1,22 +1,45 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400;500&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
 .header{
   width: 100%;
-  height: 15vh;
+  height: 13vh;
   background-color: #009FFD;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.508);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
 }
 
-.header ul{
+.menu{
   margin: 0;
   display: flex;
+  background-color: #009FFD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
 }
-.header ul a{
+.menu a li{
+  list-style: none;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  text-transform: uppercase;
+  padding-top: 6px;
+}
+
+.menu a{
   padding: 0 20px;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu a:hover{
+  background-color: #28b0ff;
 }
 
 
@@ -56,6 +79,13 @@
   width: auto;
   border-radius: 40px;
   display: inline-block;
+  transition: .2s;
+  border: 1px solid var(--c);
+
+}
+
+.panel:hover{
+  transform: scale(1.05);
 }
 
 .panel img{
@@ -122,6 +152,52 @@
 .movie{
   /* aspect-ratio: 2/3; */
   height: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+}
+.movie:hover{
+  transform: scale(1.05);
+  z-index: 10 ;
+}
+.notfocus{
+  filter: brightness(.7);
+}
+
+@media (max-width: 900px) {
+  .notfocus{
+    filter: brightness(1);
+  }
+}
+
+.label{
+  position: absolute;
+  margin: 10px;
+  right: 3px;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  background-color: #373737;
+  border-radius: 60px;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14PX;
+  
+}
+.label i{
+  color: yellow;
+  margin-right: 4px;
+}
+
+.rate{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 18PX;
+}
+.smallrate{
+  margin-top: 2px;
+  color: #d8d8d8;
 }
 
 .movie img{
@@ -129,4 +205,17 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+
+.banner{
+  width: 100vw;
+  height: 40vh;
+}
+
+.banner img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.6);
 }

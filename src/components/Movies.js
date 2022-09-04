@@ -11,16 +11,15 @@ const Movies = () => {
         .then(async response => await response.json())
         .then(data => {setMainMovies(data.results)})
 
-
-        
+        // console.log(mainMovies)
     }, []);
 
-    console.log(mainMovies)
+    // console.log(mainMovies)
 
     return(
         <div className="movie-container">
             {mainMovies.map(e => (
-            <Movie image={`https://image.tmdb.org/t/p/original${e.poster_path}`} alt={e.original_title}></Movie>
+            <Movie rate={e.vote_average} id={e.id} image={`https://image.tmdb.org/t/p/original${e.poster_path}`} alt={e.original_title}></Movie>
             ))}
         </div>
     )

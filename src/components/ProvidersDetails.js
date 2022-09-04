@@ -1,4 +1,5 @@
-import Panel from "./Panel"
+import { useParams } from "react-router-dom"
+import Header from "./Header";
 
 import netflix from '../source/netflix.jpg'
 import prime from '../source/primevideo.png'
@@ -6,10 +7,17 @@ import hbo from '../source/hbo.jpg'
 import hulu from '../source/hulu.png'
 import disney from '../source/disney.png'
 import dazn from '../source/dazn.jpg'
+import { useEffect, useState } from "react";
 
 
 
-const Panels = (prop) => {
+
+
+const ProviderDetail = () => {
+
+    const { name } = useParams();
+    const [pic, setPic] = useState();
+
 
     const providers = [
         {
@@ -46,19 +54,27 @@ const Panels = (prop) => {
     ]
 
     
+    useEffect(() => {
+        for (let i = 0; i < providers.length; i++) {
+            if(name == providers[i].name){
+                setPic(providers[i].src)
+            }
+        }
     
-       
+    }, []);
+
+   
+
     return(
         <>
-            <div className='panels'>
-                <ul className='listPanels'>
-                    {providers.map(provider => (
-                        <Panel color={provider.color} image={provider.src} alt={provider.name} id={provider.name}></Panel>
-                    ))}
-                </ul>
-            </div>
+            <Header></Header>
+
+            <section className="banner">
+                <img src={pic}></img>
+            </section>
+            <h1>{name}</h1>
         </>
     )
 }
 
-export default Panels
+export default ProviderDetail
