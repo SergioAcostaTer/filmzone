@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import SearchBar from "./Searchbar"
 
 
 
@@ -7,6 +8,7 @@ const Header = () => {
     return(
         <>
         <header className={"header"}>
+            <SearchBar></SearchBar>
             
         </header>
 

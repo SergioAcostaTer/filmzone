@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_KEY, API_URL } from '../services/getTrendMoviesPics';
 import Header from './Header';
-import { API_KEY, API_URL } from "./Slider";
+
 
 
 const MovieDetails = () =>{
     const [details, setDetails] = useState([])
     const {id} = useParams()
 
-
+ 
     useEffect(() => {
         fetch(`${API_URL}/movie/${id}${API_KEY}`)
         .then(async response => await response.json())
@@ -16,7 +17,7 @@ const MovieDetails = () =>{
 
     }, []);
 
-    console.log(details)
+    // console.log(details)
     
     return (
         <>

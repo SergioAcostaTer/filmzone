@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 
 
-
-
 const Movie = (prop) => {
 
     const [isFocus, setIsFocus] = useState(false);
