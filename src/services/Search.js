@@ -30,7 +30,7 @@ export default async function search(keyword){
 
             actualPages++
         }
-        // console.log(res)
+        // console.log(res)3
 
     return res
 }
