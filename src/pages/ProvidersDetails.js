@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import Header from "./Header";
+import Header from "../components/Header";
 
 import netflix from '../source/netflix.jpg'
 import prime from '../source/primevideo.png'
@@ -8,7 +8,7 @@ import hulu from '../source/hulu.png'
 import disney from '../source/disney.png'
 import dazn from '../source/dazn.jpg'
 import { useEffect, useState } from "react";
-import MoviesOfProviders from "./MoviesOfProviders";
+import MoviesOfProviders from "../components/MoviesOfProviders";
 
 
 

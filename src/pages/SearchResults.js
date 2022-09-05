@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import search from "../services/Search";
-
+import Movie from "../components/Movie";
 
 
 
@@ -11,16 +11,37 @@ import search from "../services/Search";
 
 const SearchResults = () => {
 
+    const [results, setResults] = useState();
+
     const { query } = useParams();
     
     
-    search(query).then(e => console.log(e))
+    useEffect(()=> {
+        
+        search(query).then(e => {
+            // setResults(undefined)  
+            console.log(e)
+            setResults(e)
+        })
 
+    }, [query])
+
+    console.log(results, query)
+    
 
     return(
         <>
             <Header></Header>
-            <h1>{query}</h1>
+            <div className="movie-container">
+
+                {
+                results ? results.slice(0, 20).map(e => (
+                <Movie key={e.id} rate={e.vote_average} id={e.id} image={`https://image.tmdb.org/t/p/original${e.poster_path}`} alt={e.original_title}></Movie>
+                ))
+                : `loading... ${query}`
+                }
+
+            </div>
         </>
     )
 }

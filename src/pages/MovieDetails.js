@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_KEY, API_URL } from '../services/getTrendMoviesPics';
-import Header from './Header';
+import Header from '../components/Header';
 
 
 

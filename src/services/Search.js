@@ -15,12 +15,14 @@ let dataLength = 0;
 let res = []
 
 export default async function search(keyword){
+    res = []
 
     while (dataLength == 0 || dataLength == 20)
+    // for (let i = 0; i < 10; i++)
         {
             dataFromApi = await searchTwenty(keyword, actualPages);
         
-            // console.log(dataFromApi)
+            console.log(keyword)
             dataLength = dataFromApi.results.length;
             // console.log(dataLength)
             
@@ -30,8 +32,6 @@ export default async function search(keyword){
 
             actualPages++
         }
-        // console.log(res)3
-
     return res
 }
 

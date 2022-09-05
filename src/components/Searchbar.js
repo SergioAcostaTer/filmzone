@@ -12,17 +12,17 @@ const SearchBar = () => {
 
     const handleOnChange = evt => {
         setKeyword(evt.target.value)
+        // console.log(keyword)
     }
 
     const navigate = useNavigate();
 
 
     const handleOnSubmit = evt => {
-        evt.preventDefault()
-        console.log(keyword)
+        // evt.preventDefault()
+        // console.log(keyword)
         // search(keyword).then(e => console.log(e))
         navigate(`/search/${keyword}`);
-
     }
 
 
