@@ -1,50 +1,32 @@
-// import { useState, useEffect } from "react";
-// // import { API_KEY, API_URL } from "./Slider";
-// // import Movie from "./Movie";
-// import getTrendMoviesPics from "../services/getTrendMoviesPics";
+import { useState, useEffect } from "react";
+// import { API_KEY, API_URL } from "./Slider";
+import Movie from "./Movie";
+import getTrendMoviesPics from "../services/getTrendMoviesPics";
+import getProviders from "../services/getProviders";
 
-// const MoviesOfProviders = () => {
+const MoviesOfProviders = () => {
+  const [moviesProviders, setMoviesProviders] = useState([]);
 
-//     let moviesID = [];
-//     let moviesData = [];
+  useEffect(() => {
+    getTrendMoviesPics("day").then((data) => setMoviesProviders(data));
+  }, []);
 
-//     // const [moviesProviders, setmoviesProviders] = useState([])
+  // console.log(moviesProviders)
 
-//     useEffect(() => {
-//         getTrendMoviesPics()
-//         .then(data => {
-//             if (data.results) {
-//                 for (let i = 0; i < data.results.length; i++) {
-//                     moviesID.push(data.results[i].id)
-//                 }
-//             }
-//         })
+  // const filtered = moviesProviders.filter(([key, value]) => value === 'string');
 
-//         console.log(moviesID)
+  return (
+    <div className="movie-container">
+      {moviesProviders.slice(0, 50).map((e) => (
+        <Movie
+          rate={e.vote_average}
+          id={e.id}
+          image={`https://image.tmdb.org/t/p/original${e.poster_path}`}
+          alt={e.original_title}
+        ></Movie>
+      ))}
+    </div>
+  );
+};
 
-//         // for (let i = 0; i < moviesID.length; i++) {
-//         //     fetch(`${API_URL}/movie/${moviesID[i]}${API_KEY}&page=1`)
-//         //     .then(async response => await response.json())
-//         //     .then(dataa => {
-//         //         if(dataa){
-//         //             moviesData.push(dataa)  
-//         //         }
-//         //     })  
-
-            
-//         // }
-//     }, []);
-
-//     console.log(moviesData)
-
-//     return(
-//         <div className="movie-container">
-//             {mainMovies.map(e => (
-//             <Movie rate={e.vote_average} id={e.id} image={`https://image.tmdb.org/t/p/original${e.poster_path}`} alt={e.original_title}></Movie>
-//             ))}
-//         </div>
-//     )
-// }
-
-
-// export default MoviesOfProviders
+export default MoviesOfProviders;

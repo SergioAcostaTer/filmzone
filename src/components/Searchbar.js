@@ -1,38 +1,46 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 // import search from "../services/Search"
-import {useNavigate} from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
+import getSearchPreview from "../services/getSearchPreview";
 
 const SearchBar = () => {
+  const [keyword, setKeyword] = useState();
 
-    const [keyword , setKeyword] = useState()
-
-    // useEffect(() => {
-    // }, [])
-
-    const handleOnChange = evt => {
-        setKeyword(evt.target.value)
-        // console.log(keyword)
+  const handleOnChange = (evt) => {
+    setKeyword(evt.target.value);
+    // console.log(keyword)
+    if (keyword) {
+      getSearchPreview(keyword).then((data) => console.log(data));
     }
+  };
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const handleOnSubmit = (evt) => {
+    evt.preventDefault();
+    // console.log(keyword)
+    // search(keyword).then(e => console.log(e))
 
-    const handleOnSubmit = evt => {
-        // evt.preventDefault()
-        // console.log(keyword)
-        // search(keyword).then(e => console.log(e))
-        navigate(`/search/${keyword}`);
-    }
+    // evt.target.value = "undefined" ? "" : navigate(`/search/${keyword}`);
 
+    navigate(`/search/${keyword}`);
+  };
 
-    return (
-        <>
-            <form onSubmit={handleOnSubmit}>
-                <input onChange={handleOnChange} type={"text"} value={keyword} ></input>
-            </form>
-        </>
-    )
-}
+  return (
+    <>
+      <form className="searchform" onSubmit={handleOnSubmit}>
+        <input
+          className="searchbar"
+          onChange={handleOnChange}
+          type={"text"}
+          value={keyword}
+        ></input>
+        <button className="button">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </>
+  );
+};
 
-export default SearchBar
+export default SearchBar;

@@ -1,32 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { API_KEY, API_URL } from '../services/getTrendMoviesPics';
-import Header from '../components/Header';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { API_KEY, API_URL } from "../services/getTrendMoviesPics";
+import Header from "../components/Header";
+import accessMovieData from "../services/accessMovieData";
 
+const MovieDetails = () => {
+  const [details, setDetails] = useState([]);
+  const { id } = useParams();
 
+  useEffect(() => {
+    accessMovieData(id).then((data) => setDetails(data));
+  }, []);
 
-const MovieDetails = () =>{
-    const [details, setDetails] = useState([])
-    const {id} = useParams()
+  console.log(details);
 
- 
-    useEffect(() => {
-        fetch(`${API_URL}/movie/${id}${API_KEY}`)
-        .then(async response => await response.json())
-        .then(data => {setDetails(data)})
+  const date = details ? details.release_date : "";
+  return (
+    <>
+      <Header></Header>
 
-    }, []);
+      <div className="global-container">
+        <div className="film-container">
+          <h1 className="title">{details.title}</h1>
 
-    // console.log(details)
-    
-    return (
-        <>
-            <Header></Header>
-            <h1>{details.original_title}</h1>
-            <h2>{details.vote_average}/10</h2>
+          <div>
+            <h2 className="subtitle">
+              Titulo original: {details.original_title}
+            </h2>
+            <ul>
+              <li>{details.original_title}</li>
+              {/* <li>{details.tagline}</li> */}
+              <li>{date}</li>
+            </ul>
+          </div>
 
-        </>
-    )
-}
+          <div className="media">
+            <div className="pictures">
+              <img
+                src={`https://image.tmdb.org/t/p/original${details.poster_path}`}
+              ></img>
+              <img
+                src={`https://image.tmdb.org/t/p/original${details.backdrop_path}`}
+              ></img>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default MovieDetails
+export default MovieDetails;
