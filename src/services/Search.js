@@ -17,8 +17,9 @@ let res = [];
 export default async function search(keyword) {
   res = [];
 
-  // while (dataLength == 0 || dataLength == 20)
-  for (let i = 0; i < 5; i++) {
+  // while (dataLength === 0 || dataLength === 20)
+  for (let i = 0; i < 5; i++) 
+  {
     dataFromApi = await searchTwenty(keyword, actualPages);
 
     console.log(keyword);

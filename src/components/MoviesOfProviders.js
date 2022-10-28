@@ -1,23 +1,29 @@
 import { useState, useEffect } from "react";
-// import { API_KEY, API_URL } from "./Slider";
 import Movie from "./Movie";
 import getTrendMoviesPics from "../services/getTrendMoviesPics";
-import getProviders from "../services/getProviders";
+import accessMovieData from "../services/accessMovieData";
 
-const MoviesOfProviders = () => {
+const MoviesOfProviders = ({provider}) => {
   const [moviesProviders, setMoviesProviders] = useState([]);
 
   useEffect(() => {
-    getTrendMoviesPics("day").then((data) => setMoviesProviders(data));
+    async function fetchData() {
+      const response = await getTrendMoviesPics("day")
+      response.map(async (film) => (
+        await accessMovieData(film.id)
+        .then(film => film.homepage.includes("netflix") ? setMoviesProviders(moviesProviders => [...moviesProviders, film]) : "")
+      ))
+        
+    }
+    fetchData()
   }, []);
 
-  // console.log(moviesProviders)
-
-  // const filtered = moviesProviders.filter(([key, value]) => value === 'string');
+  console.log(provider)
+  console.log(moviesProviders)
 
   return (
     <div className="movie-container">
-      {moviesProviders.slice(0, 50).map((e) => (
+      {moviesProviders.map((e) => (
         <Movie
           rate={e.vote_average}
           id={e.id}

@@ -2,27 +2,24 @@ import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import search from "../services/Search";
 import Movie from "../components/Movie";
 
 import { Button } from "@mui/material";
+import getSearchPreview from "../services/getSearchPreview";
 
 const SearchResults = () => {
   const [results, setResults] = useState([]);
 
-  const { query } = useParams();
+  const query = useParams();
 
   useEffect(() => {
-    search(query).then((e) => {
-      // setResults(undefined)
-      console.log(e);
-      e.sort((a, b) => a.vote_counter - b.vote_counter);
-      // e.filter((e) => e.vote_counter > 2)
-      setResults(e);
-    });
+    async function fetchData() {
+      const response = await getSearchPreview(query.query);
+      // const response = await search(query.query)
+      setResults(response.results);
+    }
+    fetchData();
   }, [query]);
-
-  console.log(results, query);
 
   return (
     <>
@@ -30,7 +27,7 @@ const SearchResults = () => {
       <div className="movie-container">
         {results ? (
           results
-            .slice(0, 20)
+            // .slice(0, 20)
             .map((e) => (
               <Movie
                 key={e.id}

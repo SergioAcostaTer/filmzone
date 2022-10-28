@@ -8,7 +8,13 @@ const Slider = () => {
   const images = [];
 
   useEffect(() => {
-    getTrendMoviesPics("day").then((result) => setTrendMoviesData(result));
+    async function fetchData() {
+      await getTrendMoviesPics("day").then((result) =>
+        setTrendMoviesData(result)
+      );
+      // localStorage.slider = JSON.stringify(trendMoviesData);
+    }
+    fetchData();
   }, []);
 
   if (trendMoviesData) {
@@ -28,7 +34,7 @@ const Slider = () => {
         showFullscreenButton={false}
         slideInterval={8000}
         slideDuration={1000}
-        autoPlay={false}
+        autoPlay={true}
         showThumbnails={false}
         items={images}
       />

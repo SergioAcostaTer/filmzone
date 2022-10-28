@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./Searchbar";
 import yt from "../source/youtube.png";
-import { Alert, Avatar } from "@mui/material";
+import { Avatar } from "@mui/material";
 
 const Header = () => {
   return (
     <>
       <header className={"header"}>
-        <Link className="logo" to={"/"}>
-          <img src={yt}></img>
-        </Link>
+        {/* <Link className="logo" to={"/"}>
+          <img src={yt} alt="yt"></img>
+        </Link> */}
         <SearchBar></SearchBar>
-        <Avatar src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00274a9f056ecfff319154cbb76e557722a4b44f.jpg" />
+        {/* <Avatar src="https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/00274a9f056ecfff319154cbb76e557722a4b44f.jpg" /> */}
       </header>
 
       {/* <ul className="menu">
